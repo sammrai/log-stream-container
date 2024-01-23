@@ -1,0 +1,8 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "3011:3000"
+    volumes:
+      - /home/ssakurai/hardhat/hardhat/src/log/arbZkf2.log:/log/arbZkf2.log

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log Viewer</title>
+    <style>
+        /* スクロール可能なログ表示エリア */
+        #log {
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <pre id="log"></pre>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const logElement = document.getElementById('log');
+
+        function updateScroll() {
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+
+        socket.on('initial log', function(data) {
+            logElement.innerText = data;
+            updateScroll();
+        });
+
+        socket.on('log update', function(data) {
+            logElement.innerText += data;
+            updateScroll();
+        });
+    </script>
+</body>
+</html>
