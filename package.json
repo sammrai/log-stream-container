@@ -1,0 +1,16 @@
+{
+  "name": "log-viewer",
+  "version": "1.0.0",
+  "description": "A simple log viewer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0",
+    "read-last-lines": "^1.8.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

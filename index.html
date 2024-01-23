@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log Viewer</title>
+    <style>
+        /* bodyとhtmlの余白とパディングをリセット */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* スクロールバーを非表示にする */
+        }
+
+        /* スクロール可能なログ表示エリア */
+        #log {
+            height: 100vh; /* ビューポートの高さに合わせる */
+            width: 100vw; /* ビューポートの幅に合わせる */
+            overflow-y: scroll;
+            font-family: monospace; /* モノスペースフォントを使用 */
+            white-space: pre-wrap; /* 長い行を折り返す */
+        }
+    </style>
+</head>
+<body>
+    <pre id="log"></pre>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const logElement = document.getElementById('log');
+
+        function updateScroll() {
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+
+        socket.on('initial log', function(data) {
+            logElement.innerText = data;
+            updateScroll();
+        });
+
+        socket.on('log update', function(data) {
+            logElement.innerText += data;
+            updateScroll();
+        });
+    </script>
+</body>
+</html>
