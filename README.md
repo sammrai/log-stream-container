@@ -1,4 +1,4 @@
-# Log Stream Container
+# logflow
 
 A real-time log viewer that streams log files through a web interface.
 
@@ -16,11 +16,7 @@ A real-time log viewer that streams log files through a web interface.
 ### Using Docker Run
 
 ```bash
-# Build the image
-docker build -t logstream .
-
-# Run the container
-docker run -v $(pwd)/log:/log -p 3000:3000 --rm -d logstream your-logfile.log
+docker run -v $(pwd)/log:/log -p 3000:3000 --rm -d sammrai/logflow your-logfile.log
 ```
 
 ### Using Docker Compose

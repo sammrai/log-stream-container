@@ -9,4 +9,5 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-CMD [ "node", "server.js" ]
+
+ENTRYPOINT ["/bin/sh", "-c", "export LOG_FILE=/log/$1 && node server.js", "--"]

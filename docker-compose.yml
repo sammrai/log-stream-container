@@ -1,8 +1,11 @@
 version: '3'
 services:
   web:
-    build: .
+    image: sammrai/logflow
     ports:
-      - "3011:3000"
+      - "3000:3000"
     volumes:
-      - /home/ssakurai/hardhat/hardhat/src/log/arbZkf2.log:/log/arbZkf2.log
+    # Mount your log directory to /log
+      - /path/to/your/log:/log
+    environment:
+      - LOG_FILE=/log/your-logfile.log
